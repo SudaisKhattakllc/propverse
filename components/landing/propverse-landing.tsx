@@ -86,11 +86,13 @@ function Hero() {
       <p className="eyebrow">3D REAL ESTATE INTELLIGENCE</p>
       <h1>See the town<br /><em>before it exists.</em></h1>
     </div>
-    <div className="hero-under hero-under-top">
-      <p>Explore every plot, plan, and possibility in one living model.</p>
-      <div className="hero-actions"><a className="primary-action" href="#towns">Explore the Town <ArrowRight size={16} /></a><a className="text-action" href="#intelligence">Watch how it works <ArrowDownRight size={16} /></a></div>
+    <div className="hero-visual-wrap">
+      <div className="hero-under hero-under-top">
+        <p>Explore every plot, plan, and possibility in one living model.</p>
+        <div className="hero-actions"><a className="primary-action" href="#towns">Explore the Town <ArrowRight size={16} /></a><a className="text-action" href="#intelligence">Watch how it works <ArrowDownRight size={16} /></a></div>
+      </div>
+      <BungalowVisual />
     </div>
-    <div className="hero-visual-wrap"><BungalowVisual /></div>
     <div className="hero-scroll-note"><span>SCROLL TO ENTER</span><span className="scroll-line" /></div>
   </section>
 }
