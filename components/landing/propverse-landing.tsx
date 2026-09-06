@@ -55,14 +55,28 @@ function TownVisual({ large = false }: { large?: boolean }) {
   </div>
 }
 
+const townImages = [
+  '/images/propverse-town-aerial.png',
+  '/images/propverse-town-variant.png',
+  '/images/propverse-bungalow.png',
+]
+
 function BungalowVisual() {
+  const [activeImage, setActiveImage] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setActiveImage((current) => (current + 1) % townImages.length), 5200)
+    return () => window.clearInterval(timer)
+  }, [])
+
   return <div className="bungalow-stage" aria-label="Cinematic 3D preview of a PropVerse bungalow" role="img">
-    <div className="bungalow-image" />
+    {townImages.map((image, index) => <div className={`bungalow-image ${index === activeImage ? 'is-active' : ''}`} key={image} style={{ backgroundImage: `url(${image})` }} aria-hidden={index !== activeImage} />)}
     <div className="bungalow-depth bungalow-depth-one" />
     <div className="bungalow-depth bungalow-depth-two" />
     <div className="bungalow-grid" />
-    <div className="bungalow-label"><span>PROPERTY / 001</span><span>LAT 31.5°N — LONG 74.3°E</span></div>
+    <div className="bungalow-label"><span>PROPERTY / 00{activeImage + 1}</span><span>LAT 31.5°N — LONG 74.3°E</span></div>
     <div className="bungalow-stamp">LIVE<br />MODEL</div>
+    <div className="bungalow-progress" aria-label="Image carousel progress">{townImages.map((image, index) => <button type="button" key={image} className={index === activeImage ? 'is-active' : ''} aria-label={`View design ${index + 1}`} onClick={() => setActiveImage(index)} />)}</div>
   </div>
 }
 
@@ -72,11 +86,11 @@ function Hero() {
       <p className="eyebrow">3D REAL ESTATE INTELLIGENCE</p>
       <h1>See the town<br /><em>before it exists.</em></h1>
     </div>
-    <div className="hero-visual-wrap"><BungalowVisual /></div>
-    <div className="hero-under">
+    <div className="hero-under hero-under-top">
       <p>Explore every plot, plan, and possibility in one living model.</p>
       <div className="hero-actions"><a className="primary-action" href="#towns">Explore the Town <ArrowRight size={16} /></a><a className="text-action" href="#intelligence">Watch how it works <ArrowDownRight size={16} /></a></div>
     </div>
+    <div className="hero-visual-wrap"><BungalowVisual /></div>
     <div className="hero-scroll-note"><span>SCROLL TO ENTER</span><span className="scroll-line" /></div>
   </section>
 }

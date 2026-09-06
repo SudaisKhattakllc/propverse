@@ -60,8 +60,13 @@ button, input { font: inherit; }
 em { color: var(--clay); font-style: italic; }
 .hero-visual-wrap { width: min(90vw, 1240px); margin: 0 auto; perspective: 1200px; }
 .bungalow-stage { position: relative; height: min(55vw, 690px); min-height: 430px; overflow: hidden; isolation: isolate; background: var(--charcoal); transform: rotateX(0deg) rotateY(0deg); transform-style: preserve-3d; animation: stage-breathe 8s ease-in-out infinite; }
-.bungalow-image { position: absolute; inset: -3%; background: linear-gradient(90deg, rgba(37,34,30,.55), transparent 46%), url('/images/propverse-bungalow.png') center / cover; transform: translateZ(0); transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
-.bungalow-stage:hover .bungalow-image { transform: scale(1.055) translate3d(0,-1%,0); }
+.bungalow-image { position: absolute; inset: -3%; background-position: center; background-size: cover; opacity: 0; transform: scale(1.045) translate3d(0,1%,0); transition: opacity 1.35s ease, transform 6s cubic-bezier(.2,.7,.2,1); }
+.bungalow-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(37,34,30,.58), transparent 48%), linear-gradient(0deg, rgba(37,34,30,.2), transparent 45%); }
+.bungalow-image.is-active { opacity: 1; transform: scale(1) translate3d(0,0,0); }
+.bungalow-stage:hover .bungalow-image.is-active { transform: scale(1.055) translate3d(0,-1%,0); }
+.bungalow-progress { position: absolute; right: 1.5rem; top: 1.5rem; z-index: 5; display: flex; gap: .4rem; }
+.bungalow-progress button { width: 2.8rem; height: 2px; padding: 0; border: 0; background: rgba(248,245,239,.4); cursor: pointer; transition: background .3s ease, transform .3s ease; }
+.bungalow-progress button.is-active { background: var(--bone); transform: scaleY(2); }
 .bungalow-depth { position: absolute; pointer-events: none; border: 1px solid rgba(248,245,239,.38); transform: translateZ(40px); }
 .bungalow-depth-one { inset: 7% 7% auto auto; width: 30%; height: 34%; border-left: 0; border-bottom: 0; }
 .bungalow-depth-two { inset: auto auto 10% 7%; width: 23%; height: 20%; border-right: 0; border-top: 0; }
