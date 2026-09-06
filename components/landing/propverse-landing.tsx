@@ -55,17 +55,29 @@ function TownVisual({ large = false }: { large?: boolean }) {
   </div>
 }
 
+function BungalowVisual() {
+  return <div className="bungalow-stage" aria-label="Cinematic 3D preview of a PropVerse bungalow" role="img">
+    <div className="bungalow-image" />
+    <div className="bungalow-depth bungalow-depth-one" />
+    <div className="bungalow-depth bungalow-depth-two" />
+    <div className="bungalow-grid" />
+    <div className="bungalow-label"><span>PROPERTY / 001</span><span>LAT 31.5°N — LONG 74.3°E</span></div>
+    <div className="bungalow-stamp">LIVE<br />MODEL</div>
+  </div>
+}
+
 function Hero() {
   return <section id="top" className="hero-section">
     <div className="hero-copy">
       <p className="eyebrow">3D REAL ESTATE INTELLIGENCE</p>
       <h1>See the town<br /><em>before it exists.</em></h1>
     </div>
-    <div className="hero-visual-wrap"><TownVisual /></div>
+    <div className="hero-visual-wrap"><BungalowVisual /></div>
     <div className="hero-under">
       <p>Explore every plot, plan, and possibility in one living model.</p>
       <div className="hero-actions"><a className="primary-action" href="#towns">Explore the Town <ArrowRight size={16} /></a><a className="text-action" href="#intelligence">Watch how it works <ArrowDownRight size={16} /></a></div>
     </div>
+    <div className="hero-scroll-note"><span>SCROLL TO ENTER</span><span className="scroll-line" /></div>
   </section>
 }
 
